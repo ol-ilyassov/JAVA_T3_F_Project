@@ -4,7 +4,7 @@
 
 <%-- Content --%>
 <div class="block1">
-    <h1>- Library -</h1><br>
+    <h1>- Hello -</h1><br>
     <p>Welcome, Dear Guest!</p><br>
     <p>We are glad to see you in our cozy corner. Make yourself at home!</p><br>
     <p>Created by</p><br>
