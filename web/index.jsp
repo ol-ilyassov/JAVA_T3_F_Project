@@ -4,6 +4,7 @@
 
 <%-- Content --%>
 <div class="block1">
+
     <h1>- Hello -</h1><br>
     <p>Welcome, Dear Guest!</p><br>
     <p>We are glad to see you in our cozy corner. Make yourself at home!</p><br>

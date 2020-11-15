@@ -17,7 +17,7 @@ public class logServlet extends HttpServlet {
         String responseText ="";
 
         boolean flag = false;
-        String sql = "SELECT id FROM student WHERE login = ? AND password = ? AND deleted != 1";
+        String sql = "SELECT student_id FROM students WHERE login = ? AND pass = ?";
         try {
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -26,7 +26,7 @@ public class logServlet extends HttpServlet {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 flag = true;
-                id = rs.getString("id");
+                id = rs.getString("student_id");
             }
             ps.close();
             rs.close();
@@ -46,7 +46,7 @@ public class logServlet extends HttpServlet {
             response.addCookie(role);
             response.addCookie(userId);
         } else {
-            sql = "SELECT id FROM admin WHERE login = ? AND password = ? AND deleted != 1";
+            sql = "SELECT id FROM admins WHERE login = ? AND password = ?";
             try {
                 Connection connection = getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql);

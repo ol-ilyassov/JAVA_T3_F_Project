@@ -18,35 +18,13 @@
             </c:when>
         </c:choose>
     </p><br>
-    <%
-        String role = " ";
-        String userId = " ";
-        Cookie[] cookies = null;
-        cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie: cookies) {
-                if (cookie.getName().equals("role")) {
-                    role = cookie.getValue();
-                }
-                if (cookie.getName().equals("userId")) {
-                    userId = cookie.getValue();
-                }
-            }
-        }
-        int number = Integer.parseInt(userId);
-    %>
-    <sql:query var="result2" dataSource="jdbc/db">
-        SELECT * from admins where id = <%=number%>
-    </sql:query>
-    <c:forEach items="${result2.rows}" var="row2">
-        <a class="btnLink" href="clubAdd.jsp?action=add&author=${row2.fname}">Create Club</a><br>
-    </c:forEach>
 
+    <a class="btnLink" href="newsAdd.jsp?action=add">Create News</a><br>
 
     <sql:query var="result" dataSource="jdbc/db">
-        SELECT * FROM clubs
+        SELECT * FROM news
     </sql:query>
-    <p>Clubs List</p>
+    <p>News List</p>
     <table>
         <tr>
             <th>Id: </th>
@@ -54,12 +32,10 @@
             <th>Author: </th>
         </tr>
         <c:forEach items="${result.rows}" var="row">
-            <tr id="tr${row.club_id}">
-                <td>${row.club_id}</td>
+            <tr id="tr${row.news_id}">
+                <td>${row.news_id}</td>
                 <td>${row.name}</td>
                 <td>${row.author}</td>
-                <td><a class="btnLink" href="clubAdd.jsp?action=update&club_id=${row.club_id}">UPDATE</a></td>
-                <td><button class="btn" onclick="deleteBook(${row.club_id})">DELETE</button></td>
             </tr>
         </c:forEach>
     </table>
@@ -68,12 +44,12 @@
 <script type="text/javascript">
     function deleteBook(taskId){
         $.ajax({
-                url:"ServletClubs?club_id="+taskId,
+                url:"ServletNews?news_id="+taskId,
                 type: "DELETE",
             }
         )
             .done (function(data, textStatus, jqXHR) {
-                $('#response').text("SUCCESS: Club was deleted.");
+                $('#response').text("SUCCESS: News was deleted.");
                 $('#tr'+taskId).remove();
             })
             .fail (function(jqXHR, textStatus, errorThrown) {

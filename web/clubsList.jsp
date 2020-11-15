@@ -19,29 +19,28 @@
         </c:choose>
     </p><br>
     <%
-        String role = " ";
-        String userId = " ";
-        Cookie[] cookies = null;
-        cookies = request.getCookies();
-        if (cookies != null) {
-            for (Cookie cookie: cookies) {
-                if (cookie.getName().equals("role")) {
-                    role = cookie.getValue();
-                }
-                if (cookie.getName().equals("userId")) {
-                    userId = cookie.getValue();
-                }
-            }
-        }
-        int number = Integer.parseInt(userId);
+    String role = " ";
+    String userId = " ";
+    Cookie[] cookies = null;
+    cookies = request.getCookies();
+    if (cookies != null) {
+    for (Cookie cookie: cookies) {
+    if (cookie.getName().equals("role")) {
+    role = cookie.getValue();
+    }
+    if (cookie.getName().equals("userId")) {
+    userId = cookie.getValue();
+    }
+    }
+    }
+    int number = Integer.parseInt(userId);
     %>
     <sql:query var="result2" dataSource="jdbc/db">
-        SELECT * from admins where id = <%=number%>
+        SELECT * from students where student_id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
         <a class="btnLink" href="clubAdd.jsp?action=add&author=${row2.fname}">Create Club</a><br>
     </c:forEach>
-
 
     <sql:query var="result" dataSource="jdbc/db">
         SELECT * FROM clubs
@@ -58,8 +57,7 @@
                 <td>${row.club_id}</td>
                 <td>${row.name}</td>
                 <td>${row.author}</td>
-                <td><a class="btnLink" href="clubAdd.jsp?action=update&club_id=${row.club_id}">UPDATE</a></td>
-                <td><button class="btn" onclick="deleteBook(${row.club_id})">DELETE</button></td>
+                <td><a class="btnLink" href="clubAdd.jsp?&club_id=${row.club_id}&role=participant">JOIN</a></td>
             </tr>
         </c:forEach>
     </table>

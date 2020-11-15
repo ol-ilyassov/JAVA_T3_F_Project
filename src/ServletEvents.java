@@ -21,13 +21,13 @@ public class ServletEvents extends HttpServlet {
             int number = EventsJDBC.getInstance().checkForID(event);
             if(number == 0) {
                 EventsJDBC.getInstance().create(event);
-                responseText = "SUCCESS: News was created";
+                responseText = "SUCCESS: Events was created";
             }else {
-                responseText = "ERROR: News with the same ID is exist";
+                responseText = "ERROR: Events with the same ID is exist";
             }
         } else if (action.equals("update")){
             EventsJDBC.getInstance().update(event_id,name,description,author);
-            responseText = "SUCCESS: News details was updated!";
+            responseText = "SUCCESS: Events details was updated!";
         }
         req.setAttribute("response",responseText);
         req.getRequestDispatcher("events.jsp").forward(req,resp);
