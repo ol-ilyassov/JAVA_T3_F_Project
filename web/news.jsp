@@ -39,7 +39,7 @@
         SELECT * from admins where id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="btnLink" href="newsAdd.jsp?action=add&author=${row2.fname}">Create News</a><br>
+        <a class="create" href="newsAdd.jsp?action=add&author=${row2.fname}">Create News</a><br>
     </c:forEach>
 
     <sql:query var="result" dataSource="jdbc/db">
@@ -51,14 +51,19 @@
             <th>Id: </th>
             <th>Name: </th>
             <th>Author: </th>
+            <th colspan="3">Actions: </th>
         </tr>
         <c:forEach items="${result.rows}" var="row">
             <tr id="tr${row.news_id}">
-                <td>${row.club_id}</td>
+                <td>${row.news_id}</td>
                 <td>${row.name}</td>
                 <td>${row.author}</td>
-                <td><a class="btnLink" href="newsAdd.jsp?action=update&news_id=${row.news_id}">UPDATE</a></td>
-                <td><button class="btn" onclick="deleteBook(${row.news_id})">DELETE</button></td>
+                <td id="td_update ${row.news_id}"><a class="btnLink" href="newsAdd.jsp?action=update&news_id=${row.news_id}" onmouseover="updrecolor(${row.news_id})" onmouseleave="upddecolor(${row.news_id})">UPDATE</a></td>
+                <td id="td_delete ${row.news_id}"><button class="btn" onclick="deleteBook(${row.news_id})" onmouseover="delrecolor(${row.news_id})" onmouseleave="deldecolor(${row.news_id})">DELETE</button></td>
+                <td id="td_description ${row.news_id}"><button class="bts" onclick="reveal(${row.news_id})" onmouseover="descrecolor(${row.news_id})" onmouseleave="descdecolor(${row.news_id})">DESCRIPTION</button></td>
+            </tr>
+            <tr>
+                <td colspan="6" id="allshow ${row.news_id}" style="display: none;"><p>Description:<br>${row.description}</p></td>
             </tr>
         </c:forEach>
     </table>

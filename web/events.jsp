@@ -39,26 +39,31 @@
         SELECT * from admins where id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="btnLink" href="eventsAdd.jsp?action=add&author=${row2.fname}">Create Event</a><br>
+        <a class="create" href="eventsAdd.jsp?action=add&author=${row2.fname}">Create Event</a><br>
     </c:forEach>
 
     <sql:query var="result" dataSource="jdbc/db">
         SELECT * FROM events
     </sql:query>
-    <p>Events List</p>
+    <p>Events List</p><br>
     <table>
         <tr>
             <th>Id: </th>
             <th>Name: </th>
             <th>Author: </th>
+            <th colspan="3">Actions: </th>
         </tr>
         <c:forEach items="${result.rows}" var="row">
             <tr id="tr${row.event_id}">
-                <td>${row.club_id}</td>
+                <td>${row.event_id}</td>
                 <td>${row.name}</td>
                 <td>${row.author}</td>
-                <td><a class="btnLink" href="eventsAdd.jsp?action=update&event_id=${row.event_id}">UPDATE</a></td>
-                <td><button class="btn" onclick="deleteBook(${row.event_id})">DELETE</button></td>
+                <td id="td_update ${row.event_id}"><a class="btnLink" href="eventsAdd.jsp?action=update&event_id=${row.event_id}" onmouseover="updrecolor(${row.event_id})" onmouseleave="upddecolor(${row.event_id})">UPDATE</a></td>
+                <td id="td_delete ${row.event_id}"><button class="btn" onclick="deleteBook(${row.event_id})" onmouseover="delrecolor(${row.event_id})" onmouseleave="deldecolor(${row.event_id})">DELETE</button></td>
+                <td id="td_description ${row.event_id}"><button class="bts" onclick="reveal(${row.event_id})" onmouseover="descrecolor(${row.event_id})" onmouseleave="descdecolor(${row.event_id})">DESCRIPTION</button></td>
+            </tr>
+            <tr>
+                <td colspan="6" id="allshow ${row.event_id}" style="display: none;"><p>Description:<br>${row.description}</p></td>
             </tr>
         </c:forEach>
     </table>

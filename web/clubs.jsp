@@ -39,7 +39,7 @@
         SELECT * from admins where id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="btnLink" href="clubAdd.jsp?action=add&author=${row2.fname}">Create Club</a><br>
+        <a class="create" href="clubAdd.jsp?action=add&author=${row2.fname}">Create Club</a><br>
     </c:forEach>
 
 
@@ -52,14 +52,19 @@
             <th>Id: </th>
             <th>Name: </th>
             <th>Author: </th>
+            <th colspan="3">Actions: </th>
         </tr>
         <c:forEach items="${result.rows}" var="row">
             <tr id="tr${row.club_id}">
                 <td>${row.club_id}</td>
                 <td>${row.name}</td>
                 <td>${row.author}</td>
-                <td><a class="btnLink" href="clubAdd.jsp?action=update&club_id=${row.club_id}">UPDATE</a></td>
-                <td><button class="btn" onclick="deleteBook(${row.club_id})">DELETE</button></td>
+                <td id="td_update ${row.club_id}"><a class="btnLink" href="eventsAdd.jsp?action=update&event_id=${row.club_id}" onmouseover="updrecolor(${row.club_id})" onmouseleave="upddecolor(${row.club_id})">UPDATE</a></td>
+                <td id="td_delete ${row.club_id}"><button class="btn" onclick="deleteBook(${row.club_id})" onmouseover="delrecolor(${row.club_id})" onmouseleave="deldecolor(${row.club_id})">DELETE</button></td>
+                <td id="td_description ${row.club_id}"><button class="bts" onclick="reveal(${row.club_id})" onmouseover="descrecolor(${row.club_id})" onmouseleave="descdecolor(${row.club_id})">DESCRIPTION</button></td>
+            </tr>
+            <tr>
+                <td colspan="6" id="allshow ${row.club_id}" style="display: none;"><p>Description:<br>${row.description}</p></td>
             </tr>
         </c:forEach>
     </table>

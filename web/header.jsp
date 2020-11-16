@@ -2,6 +2,7 @@
 <html>
 <head>
     <script src="js/jquery-3.5.1.min.js" type="text/javascript"></script>
+    <script src="js/functions.js" type="text/javascript"></script>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/left-nav-style.css">

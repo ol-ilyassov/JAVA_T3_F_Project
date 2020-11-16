@@ -31,7 +31,7 @@ p { font-size: 20px; }
 
 fieldset { border: none; }
 
-.wrapper { flex-grow: 1; }
+.wrapper { flex-grow: 1;background-image: url("../img/art1.jpeg");background-size: cover; }
 
 /* - booklist.jsp - */
 
@@ -65,6 +65,13 @@ footer {
 	justify-content: center;
 	align-items: center;
 	padding: 30px 30px 30px 30px;
+}
+
+.block1 p{
+	font-size: 25px;
+	background-color: white;
+	padding: 5px;
+	border-radius: 5px;
 }
 
 .controlPanel {
@@ -115,22 +122,32 @@ footer {
 	font-size: 16px;
 }
 
+#td_update{
+	background: white;
+}
+
+#td_delete{
+	background: white;
+}
+
+#td_description{
+	background: white;
+}
+
 .btn {
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: bold;
-	padding: 5px;
-	background: mediumpurple;
-	color: white;
+	background: white;
+	color: mediumpurple;
 	border: none;
-	height: 40px;
+	width: 100%;
+	height: 50px;
 }
 
 .btn:hover {
-	font-size: 18px;
-	background: white;
-	border: 1px solid mediumpurple;
-	padding: 4px;
-	color: mediumpurple;
+	font-size: 20px;
+	background: mediumpurple;
+	color: white;
 	font-weight: bold;
 	cursor: pointer;
 }
@@ -141,20 +158,57 @@ footer {
 	align-items: center;
 	justify-content: center;
 	font-weight: bold;
-	background-color: mediumpurple;
-	color: white;
+	background: white;
+	color: mediumpurple;
 	width: 100%;
 	height: 50px;
-	border: none;
-	padding: 1px;
 }
 
 .btnLink:hover {
-	background: white;
-	border: 1px solid mediumpurple;
-	color: mediumpurple;
+	background-color: mediumpurple;
+	color: white;
+}
+
+.bts {
+	font-size: 20px;
 	font-weight: bold;
-	padding: 0;
+	background: white;
+	color: mediumpurple;
+	border: none;
+	width: 100%;
+	height: 50px;
+}
+
+.bts:hover {
+	font-size: 20px;
+	background: mediumpurple;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.create {
+	font-size: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	background: orange;
+	color: mediumpurple;
+	width: 100vw;
+	border-top: 4px solid black;
+	border-bottom: 4px solid black;
+}
+
+.create_event:hover {
+	background-color: mediumpurple;
+	color: white;
+}
+
+#allshow{
+	background-color: white;
+	border-radius: 5px;
+	width:100%;
 }
 
 /* - Forms - Register */
@@ -284,4 +338,17 @@ footer {
 td,table,th{
 	text-align: center;
 	border: 1px solid black;
+	padding: 10px;
+}
+
+td{
+	background-color: white;
+}
+
+a{
+	text-decoration: none;
+}
+
+table{
+	background-color: orange;
 }
