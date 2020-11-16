@@ -18,8 +18,30 @@
             </c:when>
         </c:choose>
     </p><br>
+    <%
+        String role = " ";
+        String userId = " ";
+        Cookie[] cookies = null;
+        cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie: cookies) {
+                if (cookie.getName().equals("role")) {
+                    role = cookie.getValue();
+                }
+                if (cookie.getName().equals("userId")) {
+                    userId = cookie.getValue();
+                }
+            }
+        }
+        int number = Integer.parseInt(userId);
+    %>
+    <sql:query var="result2" dataSource="jdbc/db">
+        SELECT * from students where student_id = <%=number%>
+    </sql:query>
+    <c:forEach items="${result2.rows}" var="row2">
+        <a class="btnLink" href="newsAdd.jsp?action=add&author=${row2.fname}">Create News</a><br>
+    </c:forEach>
 
-    <a class="btnLink" href="newsAdd.jsp?action=add">Create News</a><br>
 
     <sql:query var="result" dataSource="jdbc/db">
         SELECT * FROM news

@@ -18,8 +18,29 @@
             </c:when>
         </c:choose>
     </p><br>
-
-    <a class="btnLink" href="eventsAdd.jsp?action=add">Create Event</a><br>
+    <%
+        String role = " ";
+        String userId = " ";
+        Cookie[] cookies = null;
+        cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie: cookies) {
+                if (cookie.getName().equals("role")) {
+                    role = cookie.getValue();
+                }
+                if (cookie.getName().equals("userId")) {
+                    userId = cookie.getValue();
+                }
+            }
+        }
+        int number = Integer.parseInt(userId);
+    %>
+    <sql:query var="result2" dataSource="jdbc/db">
+        SELECT * from admins where id = <%=number%>
+    </sql:query>
+    <c:forEach items="${result2.rows}" var="row2">
+        <a class="btnLink" href="eventsAdd.jsp?action=add&author=${row2.fname}">Create Event</a><br>
+    </c:forEach>
 
     <sql:query var="result" dataSource="jdbc/db">
         SELECT * FROM events
