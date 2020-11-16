@@ -34,7 +34,7 @@ public class ClubsJDBC {
         return connection;
     }
 
-    public Clubs create(Clubs club ) {
+    public Club create(Club club ) {
         String sql = "INSERT INTO clubs ( club_id,name,description,author) VALUES ( ?,?,?,?)";
         try {
             Connection connection = getConnection();
@@ -42,7 +42,7 @@ public class ClubsJDBC {
             ps.setInt(1, club.getClub_id());
             ps.setString(2, club.getName());
             ps.setString(3, club.getDescription());
-            ps.setString(4, club.getAuthor());
+            ps.setInt(4, club.getAuthor_id());
             ps.executeUpdate();
             ps.close();
             connection.close();
@@ -67,7 +67,7 @@ public class ClubsJDBC {
         }
     }
 
-    public void update(int club_id,String name,String description,String author){
+    public void update(int club_id, String name, String description, int author){
         System.out.println("Update:"+club_id);
         String sql = "UPDATE clubs SET name=?,description=?,author=? WHERE club_id = ?";
         try {
@@ -75,7 +75,7 @@ public class ClubsJDBC {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, name);
             ps.setString(2, description);
-            ps.setString(3, author);
+            ps.setInt(3, author);
             ps.setInt(4,club_id);
             ps.executeUpdate();
             ps.close();
@@ -85,7 +85,7 @@ public class ClubsJDBC {
         }
     }
 
-    public int checkForID(Clubs club) {
+    public int checkForID(Club club) {
         int counter = 0;
         String sql = "SELECT name FROM clubs WHERE club_id = ?";
         try {

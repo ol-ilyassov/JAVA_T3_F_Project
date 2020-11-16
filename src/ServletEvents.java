@@ -14,9 +14,9 @@ public class ServletEvents extends HttpServlet {
         int event_id = Integer.parseInt(req.getParameter("event_id"));
         String name = req.getParameter("name");
         String description = req.getParameter("description");
-        String author = req.getParameter("author");
+        int author = Integer.parseInt(req.getParameter("author"));
         String responseText = "";
-        Events event = new Events(event_id,name,description,author);
+        Events event = new Events(name,description,author,event_id);
         if (action.equals("add")) {
             int number = EventsJDBC.getInstance().checkForID(event);
             if(number == 0) {

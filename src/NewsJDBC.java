@@ -42,7 +42,7 @@ public class NewsJDBC {
             ps.setInt(1, news.getNews_id());
             ps.setString(2, news.getName());
             ps.setString(3, news.getDescription());
-            ps.setString(4, news.getAuthor());
+            ps.setInt(4, news.getAuthor_id());
             ps.executeUpdate();
             ps.close();
             connection.close();
@@ -67,7 +67,7 @@ public class NewsJDBC {
         }
     }
 
-    public void update(int news_id,String name,String description,String author){
+    public void update(int news_id,String name,String description,int author){
         System.out.println("Update:"+news_id);
         String sql = "UPDATE news SET name=?,description=?,author=? WHERE news_id = ?";
         try {
@@ -75,7 +75,7 @@ public class NewsJDBC {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, name);
             ps.setString(2, description);
-            ps.setString(3, author);
+            ps.setInt(3, author);
             ps.setInt(4,news_id);
             ps.executeUpdate();
             ps.close();

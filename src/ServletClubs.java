@@ -15,9 +15,9 @@ public class ServletClubs extends HttpServlet {
         int club_id = Integer.parseInt(req.getParameter("club_id"));
         String name = req.getParameter("name");
         String description = req.getParameter("description");
-        String author = req.getParameter("author");
+        int author = Integer.parseInt(req.getParameter("author"));
         String responseText = "";
-        Clubs club = new Clubs(club_id,name,description,author);
+        Club club = new Club(name,description,author,club_id);
         if (action.equals("add")) {
             int number = ClubsJDBC.getInstance().checkForID(club);
             if(number == 0) {

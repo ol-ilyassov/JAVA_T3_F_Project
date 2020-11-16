@@ -39,7 +39,7 @@
         SELECT * from admins where id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="btnLink" href="clubAdd.jsp?action=add&author=${row2.fname}">Create Club</a><br>
+        <a class="btnLink" href="clubAdd.jsp?action=add&author=${row2.id}">Create Club</a><br>
     </c:forEach>
 
 

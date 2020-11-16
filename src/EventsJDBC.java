@@ -42,7 +42,7 @@ public class EventsJDBC {
             ps.setInt(1, event.getEvent_id());
             ps.setString(2, event.getName());
             ps.setString(3, event.getDescription());
-            ps.setString(4, event.getAuthor());
+            ps.setInt(4, event.getAuthor_id());
             ps.executeUpdate();
             ps.close();
             connection.close();
@@ -67,7 +67,7 @@ public class EventsJDBC {
         }
     }
 
-    public void update(int event_id,String name,String description,String author){
+    public void update(int event_id, String name, String description, int author){
         System.out.println("Update:"+event_id);
         String sql = "UPDATE events SET name=?,description=?,author=? WHERE event_id = ?";
         try {
@@ -75,7 +75,7 @@ public class EventsJDBC {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, name);
             ps.setString(2, description);
-            ps.setString(3, author);
+            ps.setInt(3, author);
             ps.setInt(4,event_id);
             ps.executeUpdate();
             ps.close();

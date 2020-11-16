@@ -39,7 +39,7 @@
         SELECT * from admins where id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="btnLink" href="eventsAdd.jsp?action=add&author=${row2.fname}">Create Event</a><br>
+        <a class="btnLink" href="eventsAdd.jsp?action=add&author=${row2.id}">Create Event</a><br>
     </c:forEach>
 
     <sql:query var="result" dataSource="jdbc/db">

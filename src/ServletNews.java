@@ -14,9 +14,9 @@ public class ServletNews extends HttpServlet {
         int news_id = Integer.parseInt(req.getParameter("news_id"));
         String name = req.getParameter("name");
         String description = req.getParameter("description");
-        String author = req.getParameter("author");
+        int author = Integer.parseInt(req.getParameter("author"));
         String responseText = "";
-        News news = new News(news_id,name,description,author);
+        News news = new News(name,description,author,news_id);
         if (action.equals("add")) {
             int number = NewsJDBC.getInstance().checkForID(news);
             if(number == 0) {
