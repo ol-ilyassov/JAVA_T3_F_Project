@@ -39,7 +39,7 @@
         SELECT * from students where student_id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="btnLink" href="newsAdd.jsp?action=add&author=${row2.fname}">Create News</a><br>
+        <a class="btnLink" href="newsAdd.jsp?action=add&author=${row2.student_id}">Create News</a><br>
     </c:forEach>
 
 

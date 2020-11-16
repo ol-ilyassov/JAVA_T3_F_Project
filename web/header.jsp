@@ -31,13 +31,13 @@
             if (temp.equals(" ")) {
                 out.print("<li><a href='login.jsp'>Login</a></li>");
             } else if (temp.equals("Student")) {
-                out.print("<li><a href='students.jsp'>Students</a></li>");
+                out.print("<li><a href='ServletStudent'>Students</a></li>");
                 out.print("<li><a href='clubsList.jsp'>Clubs</a></li>");
                 out.print("<li><a href='newsList.jsp'>News</a></li>");
                 out.print("<li><a href='eventsList.jsp'>Events</a></li>");
                 out.print("<li><a href='logOut'>Logout</a></li>");
             } else if (temp.equals("Admin")) {
-                out.print("<li><a href='students.jsp'>Students</a></li>");
+                out.print("<li><a href='ServletStudent.jsp'>Students</a></li>");
                 out.print("<li><a href='clubs.jsp'>Clubs</a></li>");
                 out.print("<li><a href='news.jsp'>News</a></li>");
                 out.print("<li><a href='events.jsp'>Events</a></li>");
