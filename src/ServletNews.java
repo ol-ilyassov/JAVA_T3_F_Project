@@ -4,9 +4,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet("/ServletNews")
 public class ServletNews extends HttpServlet {
+    NewsJDBC db = new NewsJDBC();
     /*Answer to post method*/
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -39,5 +43,22 @@ public class ServletNews extends HttpServlet {
         int news_id = req.getParameter("news_id") != null ? Integer.parseInt(req.getParameter("news_id")) : 0;
         NewsJDBC.getInstance().delete(news_id);
 
+    }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try
+        {
+            Connection connection = db.getConnection();
+            if(connection != null) {
+                ArrayList<News> newsList = db.readNews(connection);
+                connection.close();
+                req.setAttribute("newsList", newsList);
+            }
+        }
+        catch (SQLException exception)
+        {
+            exception.printStackTrace();
+        }
+        req.getRequestDispatcher("newsList.jsp").forward(req, resp);
     }
 }

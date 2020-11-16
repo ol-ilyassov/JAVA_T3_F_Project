@@ -2,10 +2,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class EventsJDBC {
     private static EventsJDBC instance = new EventsJDBC();
@@ -14,9 +12,9 @@ public class EventsJDBC {
         return instance;
     }
 
-    private EventsJDBC() {}
+    public EventsJDBC() {}
 
-    private Connection getConnection()
+    public Connection getConnection()
     {
         Context initialContext;
         Connection connection = null;
@@ -102,5 +100,36 @@ public class EventsJDBC {
             e.printStackTrace();
         }
         return counter;
+    }
+
+    public ArrayList<Events> readEvents(Connection connection)
+    {
+        ArrayList<Events> eventList = new ArrayList<>();
+        try
+        {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM events");
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int numberOfColumns = metaData.getColumnCount();
+            Events events;
+            while (resultSet.next())
+            {
+                String[] eventsFields = new String[numberOfColumns];
+                for(int a=1; a<=numberOfColumns; a++)
+                {
+                    eventsFields[a-1] = resultSet.getObject(a).toString();
+                }
+                events = new Events(eventsFields);
+                eventList.add(events);
+            }
+            resultSet.close();
+            connection.close();
+            statement.close();
+        }
+        catch (SQLException sqlException)
+        {
+            sqlException.printStackTrace();
+        }
+        return eventList;
     }
 }

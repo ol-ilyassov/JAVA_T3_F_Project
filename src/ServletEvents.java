@@ -4,9 +4,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet("/ServletEvents")
 public class ServletEvents extends HttpServlet {
+    EventsJDBC db = new EventsJDBC();
     /*Answer to post method*/
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -40,5 +44,23 @@ public class ServletEvents extends HttpServlet {
         int event_id = req.getParameter("event_id") != null ? Integer.parseInt(req.getParameter("event_id")) : 0;
         EventsJDBC.getInstance().delete(event_id);
 
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try
+        {
+            Connection connection = db.getConnection();
+            if(connection != null) {
+                ArrayList<Events> eventsList = db.readEvents(connection);
+                connection.close();
+                req.setAttribute("eventsList", eventsList);
+            }
+        }
+        catch (SQLException exception)
+        {
+            exception.printStackTrace();
+        }
+        req.getRequestDispatcher("eventsList.jsp").forward(req, resp);
     }
 }

@@ -42,24 +42,23 @@
         <a class="btnLink" href="newsAdd.jsp?action=add&author=${row2.student_id}">Create News</a><br>
     </c:forEach>
 
-
-    <sql:query var="result" dataSource="jdbc/db">
-        SELECT * FROM news
-    </sql:query>
-    <p>News List</p>
+    <p>News List</p><br>
+    <input id="myInput" type="text" placeholder="Search.."><br>
     <table>
         <tr>
             <th>Id: </th>
             <th>Name: </th>
             <th>Author: </th>
         </tr>
-        <c:forEach items="${result.rows}" var="row">
-            <tr id="tr${row.news_id}">
-                <td>${row.news_id}</td>
-                <td>${row.name}</td>
-                <td>${row.author}</td>
+        <tbody id="myTable">
+        <c:forEach var="news" items="${newsList}">
+            <tr>
+                <td>${news.news_id}</td>
+                <td>${news.name}</td>
+                <td>${news.author_id}</td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </div>
 
@@ -78,6 +77,15 @@
                 alert("Error "+textStatus+": "+errorThrown);
             })
     }
+
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
 </script>
 
 <%-- Footer --%>

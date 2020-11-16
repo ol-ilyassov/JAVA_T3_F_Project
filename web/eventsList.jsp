@@ -42,21 +42,23 @@
         <a class="btnLink" href="eventsAdd.jsp?action=add&author=${row2.student_id}">Create Event</a><br>
     </c:forEach>
 
-    <sql:query var="result" dataSource="jdbc/db">
-        SELECT * FROM events
-    </sql:query>
-    <p>Events List</p>
+    <p>Events List</p><br>
+    <input id="myInput1" type="text" placeholder="Search.."><br>
     <table>
         <tr>
+            <th>ID: </th>
             <th>Name: </th>
             <th>Author: </th>
         </tr>
-        <c:forEach items="${result.rows}" var="row">
-            <tr id="tr${row.event_id}">
-                <td>${row.name}</td>
-                <td>${row.author}</td>
+        <tbody id="myTable1">
+        <c:forEach var="events" items="${eventsList}">
+            <tr>
+                <td>${events.event_id}</td>
+                <td>${events.name}</td>
+                <td>${events.author}</td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </div>
 
@@ -75,6 +77,15 @@
                 alert("Error "+textStatus+": "+errorThrown);
             })
     }
+
+    $(document).ready(function(){
+        $("#myInput1").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable1 tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
 </script>
 
 <%-- Footer --%>

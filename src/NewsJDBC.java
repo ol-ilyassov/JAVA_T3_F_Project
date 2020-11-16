@@ -2,10 +2,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class NewsJDBC {
     private static NewsJDBC instance = new NewsJDBC();
@@ -14,9 +12,9 @@ public class NewsJDBC {
         return instance;
     }
 
-    private NewsJDBC() {}
+    public NewsJDBC() {}
 
-    private Connection getConnection()
+    public Connection getConnection()
     {
         Context initialContext;
         Connection connection = null;
@@ -102,5 +100,36 @@ public class NewsJDBC {
             e.printStackTrace();
         }
         return counter;
+    }
+
+    public ArrayList<News> readNews(Connection connection)
+    {
+        ArrayList<News> newsList = new ArrayList<>();
+        try
+        {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM news");
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int numberOfColumns = metaData.getColumnCount();
+            News news;
+            while (resultSet.next())
+            {
+                String[] newsFields = new String[numberOfColumns];
+                for(int a=1; a<=numberOfColumns; a++)
+                {
+                    newsFields[a-1] = resultSet.getObject(a).toString();
+                }
+                news = new News(newsFields);
+                newsList.add(news);
+            }
+            resultSet.close();
+            connection.close();
+            statement.close();
+        }
+        catch (SQLException sqlException)
+        {
+            sqlException.printStackTrace();
+        }
+        return newsList;
     }
 }
