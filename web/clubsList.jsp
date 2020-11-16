@@ -48,13 +48,11 @@
     <p>Clubs List</p>
     <table>
         <tr>
-            <th>Id: </th>
             <th>Name: </th>
             <th>Author: </th>
         </tr>
         <c:forEach items="${result.rows}" var="row">
             <tr id="tr${row.club_id}">
-                <td>${row.club_id}</td>
                 <td>${row.name}</td>
                 <td>${row.author}</td>
                 <td><a class="btnLink" href="clubAdd.jsp?&club_id=${row.club_id}&role=participant">JOIN</a></td>

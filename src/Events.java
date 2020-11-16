@@ -7,6 +7,10 @@ public class Events extends eve {
         this.event_id = event_id;
     }
 
+    public Events(String name, String description, int author_id) {
+        super(name, description, author_id);
+    }
+
     public int getEvent_id() {
         return event_id;
     }

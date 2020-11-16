@@ -11,12 +11,11 @@ public class ServletEvents extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String action = req.getParameter("action");
-        int event_id = Integer.parseInt(req.getParameter("event_id"));
         String name = req.getParameter("name");
         String description = req.getParameter("description");
         int author = Integer.parseInt(req.getParameter("author"));
         String responseText = "";
-        Events event = new Events(name,description,author,event_id);
+        Events event = new Events(name,description,author);
         if (action.equals("add")) {
             int number = EventsJDBC.getInstance().checkForID(event);
             if(number == 0) {
@@ -26,6 +25,7 @@ public class ServletEvents extends HttpServlet {
                 responseText = "ERROR: Events with the same ID is exist";
             }
         } else if (action.equals("update")){
+            int event_id = Integer.parseInt(req.getParameter("event_id"));
             EventsJDBC.getInstance().update(event_id,name,description,author);
             responseText = "SUCCESS: Events details was updated!";
         }

@@ -35,14 +35,13 @@ public class EventsJDBC {
     }
 
     public Events create(Events event ) {
-        String sql = "INSERT INTO events ( event_id,name,description,author) VALUES ( ?,?,?,?)";
+        String sql = "INSERT INTO events ( name,description,author) VALUES ( ?,?,?)";
         try {
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, event.getEvent_id());
-            ps.setString(2, event.getName());
-            ps.setString(3, event.getDescription());
-            ps.setInt(4, event.getAuthor_id());
+            ps.setString(1, event.getName());
+            ps.setString(2, event.getDescription());
+            ps.setInt(3, event.getAuthor_id());
             ps.executeUpdate();
             ps.close();
             connection.close();

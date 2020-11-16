@@ -39,7 +39,7 @@
         SELECT * from admins where id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="create" href="eventsAdd.jsp?action=add&author=${row2.fname}">Create Event</a><br>
+        <a class="create" href="eventsAdd.jsp?action=add&author=${row2.id}">Create Event</a><br>
     </c:forEach>
 
     <sql:query var="result" dataSource="jdbc/db">
@@ -48,14 +48,12 @@
     <p>Events List</p><br>
     <table>
         <tr>
-            <th>Id: </th>
             <th>Name: </th>
             <th>Author: </th>
             <th colspan="3">Actions: </th>
         </tr>
         <c:forEach items="${result.rows}" var="row">
             <tr id="tr${row.event_id}">
-                <td>${row.event_id}</td>
                 <td>${row.name}</td>
                 <td>${row.author}</td>
                 <td id="td_update ${row.event_id}"><a class="btnLink" href="eventsAdd.jsp?action=update&event_id=${row.event_id}" onmouseover="updrecolor(${row.event_id})" onmouseleave="upddecolor(${row.event_id})">UPDATE</a></td>

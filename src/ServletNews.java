@@ -11,12 +11,11 @@ public class ServletNews extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String action = req.getParameter("action");
-        int news_id = Integer.parseInt(req.getParameter("news_id"));
         String name = req.getParameter("name");
         String description = req.getParameter("description");
         int author = Integer.parseInt(req.getParameter("author"));
         String responseText = "";
-        News news = new News(name,description,author,news_id);
+        News news = new News(name,description,author);
         if (action.equals("add")) {
             int number = NewsJDBC.getInstance().checkForID(news);
             if(number == 0) {
@@ -26,12 +25,12 @@ public class ServletNews extends HttpServlet {
                 responseText = "ERROR: News with the same ID is exist";
             }
         } else if (action.equals("update")){
+            int news_id = Integer.parseInt(req.getParameter("news_id"));
             NewsJDBC.getInstance().update(news_id,name,description,author);
             responseText = "SUCCESS: News details was updated!";
         }
         req.setAttribute("response",responseText);
         req.getRequestDispatcher("news.jsp").forward(req,resp);
-
 
     }
     /*Answer to delete method*/

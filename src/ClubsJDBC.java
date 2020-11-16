@@ -35,14 +35,13 @@ public class ClubsJDBC {
     }
 
     public Club create(Club club ) {
-        String sql = "INSERT INTO clubs ( club_id,name,description,author) VALUES ( ?,?,?,?)";
+        String sql = "INSERT INTO clubs (name,description,author) VALUES ( ?,?,?)";
         try {
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, club.getClub_id());
-            ps.setString(2, club.getName());
-            ps.setString(3, club.getDescription());
-            ps.setInt(4, club.getAuthor_id());
+            ps.setString(1, club.getName());
+            ps.setString(2, club.getDescription());
+            ps.setInt(3, club.getAuthor_id());
             ps.executeUpdate();
             ps.close();
             connection.close();
@@ -104,4 +103,5 @@ public class ClubsJDBC {
         }
         return counter;
     }
+
 }

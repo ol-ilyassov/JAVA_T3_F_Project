@@ -12,21 +12,22 @@ public class ServletClubs extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         String action = req.getParameter("action");
-        int club_id = Integer.parseInt(req.getParameter("club_id"));
         String name = req.getParameter("name");
         String description = req.getParameter("description");
         int author = Integer.parseInt(req.getParameter("author"));
         String responseText = "";
-        Club club = new Club(name,description,author,club_id);
+        Club club = new Club(name,description,author);
         if (action.equals("add")) {
             int number = ClubsJDBC.getInstance().checkForID(club);
             if(number == 0) {
                 ClubsJDBC.getInstance().create(club);
+
                 responseText = "SUCCESS: Club was created";
             }else {
                 responseText = "ERROR: Club with the same ID is exist";
             }
         } else if (action.equals("update")){
+            int club_id = Integer.parseInt(req.getParameter("club_id"));
             ClubsJDBC.getInstance().update(club_id,name,description,author);
             responseText = "SUCCESS: Club details was updated!";
         }

@@ -48,13 +48,11 @@
     <p>Events List</p>
     <table>
         <tr>
-            <th>Id: </th>
             <th>Name: </th>
             <th>Author: </th>
         </tr>
         <c:forEach items="${result.rows}" var="row">
             <tr id="tr${row.event_id}">
-                <td>${row.event_id}</td>
                 <td>${row.name}</td>
                 <td>${row.author}</td>
             </tr>

@@ -35,14 +35,13 @@ public class NewsJDBC {
     }
 
     public News create(News news ) {
-        String sql = "INSERT INTO news ( news_id,name,description,author) VALUES ( ?,?,?,?)";
+        String sql = "INSERT INTO news ( name,description,author) VALUES ( ?,?,?)";
         try {
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, news.getNews_id());
-            ps.setString(2, news.getName());
-            ps.setString(3, news.getDescription());
-            ps.setInt(4, news.getAuthor_id());
+            ps.setString(1, news.getName());
+            ps.setString(2, news.getDescription());
+            ps.setInt(3, news.getAuthor_id());
             ps.executeUpdate();
             ps.close();
             connection.close();

@@ -39,7 +39,7 @@
         SELECT * from admins where id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="create" href="clubAdd.jsp?action=add&author=${row2.fname}">Create Club</a><br>
+        <a class="create" href="clubAdd.jsp?action=add&author=${row2.id}">Create Club</a><br>
     </c:forEach>
 
 
@@ -49,14 +49,12 @@
     <p>Clubs List</p>
     <table>
         <tr>
-            <th>Id: </th>
             <th>Name: </th>
             <th>Author: </th>
             <th colspan="3">Actions: </th>
         </tr>
         <c:forEach items="${result.rows}" var="row">
             <tr id="tr${row.club_id}">
-                <td>${row.club_id}</td>
                 <td>${row.name}</td>
                 <td>${row.author}</td>
                 <td id="td_update ${row.club_id}"><a class="btnLink" href="eventsAdd.jsp?action=update&event_id=${row.club_id}" onmouseover="updrecolor(${row.club_id})" onmouseleave="upddecolor(${row.club_id})">UPDATE</a></td>

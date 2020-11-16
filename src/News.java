@@ -7,6 +7,10 @@ public class News extends eve {
         this.news_id = news_id;
     }
 
+    public News(String name, String description, int author_id) {
+        super(name, description, author_id);
+    }
+
     public int getNews_id() {
         return news_id;
     }
