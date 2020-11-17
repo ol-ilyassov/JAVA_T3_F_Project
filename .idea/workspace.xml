@@ -24,26 +24,21 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ffd2edc2-533c-4948-acd2-6a7f6741b8e2" name="Default Changelist" comment="Update">
+    <list default="true" id="ffd2edc2-533c-4948-acd2-6a7f6741b8e2" name="Default Changelist" comment="Updates and StudentList">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/ServletEvents.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/ServletEvents.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/clubAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/clubAdd.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/clubs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/clubs.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/events.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/events.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/eventsAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/eventsAdd.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/Club.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/Club.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/ClubsJDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/ClubsJDBC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/ServletClubs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/ServletClubs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/ServletNews.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/ServletNews.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/clubsList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/clubsList.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/eventsList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/eventsList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/news.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/news.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/newsAdd.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/newsAdd.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/student.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/student.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Java Final Project/ServletEvents.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Final Project/ServletEvents.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Club.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Club.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClubsJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClubsJDBC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ServletClubs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServletClubs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Final Project/Club.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Final Project/Club.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Final Project/ClubsJDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Final Project/ClubsJDBC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Final Project/ServletClubs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Final Project/ServletClubs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Java Final Project/ServletNews.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Java Final Project/ServletNews.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/clubsList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/clubsList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/eventsList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/eventsList.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/newsList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/newsList.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +180,7 @@
       <workItem from="1605539212233" duration="17025000" />
       <workItem from="1605598455259" duration="8155000" />
       <workItem from="1605612737694" duration="1361000" />
-      <workItem from="1605623044421" duration="3796000" />
+      <workItem from="1605623044421" duration="5671000" />
     </task>
     <task id="LOCAL-00001" summary="Index">
       <created>1605114003484</created>
@@ -229,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605624789251</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updates and StudentList">
+      <created>1605627099117</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605627099117</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +256,8 @@
     <MESSAGE value="Authors2" />
     <MESSAGE value="No ID" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="Updates and StudentList" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates and StudentList" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="0" key="#Project_Structure" timestamp="1605598926648">
@@ -269,6 +272,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="599" y="95" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1536.824@0.0.1536.824" timestamp="1605598900309" />
+    <state x="551" y="303" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1605628013558">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="551" y="303" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1605628013558" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605555785837">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -377,10 +384,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605111852868" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605624794238">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1605627103534">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605624794238" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1605627103534" />
     <state x="498" y="304" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1605598894375">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

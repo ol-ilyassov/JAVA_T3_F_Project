@@ -7,17 +7,6 @@
 
 <%-- Content --%>
 <div class="block1">
-    <p>Status of Last Action:</p><br>
-    <p id="response">
-        <c:choose>
-            <c:when test = "${empty response}">
-                - NO COMPLETED PROCESSES -
-            </c:when>
-            <c:when test = "${not empty response}">
-                <c:out value="${response}"/>
-            </c:when>
-        </c:choose>
-    </p><br>
     <%
         String role = " ";
         String userId = " ";
@@ -48,14 +37,12 @@
         <tr>
             <th>ID: </th>
             <th>Name: </th>
-            <th>Author: </th>
         </tr>
         <tbody id="myTable1">
         <c:forEach var="events" items="${eventsList}">
             <tr>
                 <td>${events.event_id}</td>
                 <td>${events.name}</td>
-                <td>${events.author_id}</td>
             </tr>
         </c:forEach>
         </tbody>

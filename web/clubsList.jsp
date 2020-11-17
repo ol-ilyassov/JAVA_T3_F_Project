@@ -37,14 +37,13 @@
         <tr>
             <th>ID: </th>
             <th>Name: </th>
-            <th>Author: </th>
+            <th colspan="2">Actions: </th>
         </tr>
         <tbody id="myTable2">
         <c:forEach items="${clubsList}" var="clubs">
             <tr>
                 <td>${clubs.club_id}</td>
                 <td>${clubs.name}</td>
-                <td>${clubs.author_id}</td>
                 <td><a class="btnLink" href="clubAdd.jsp?&club_id=${row.club_id}&role=participant">JOIN</a></td>
             </tr>
         </c:forEach>
