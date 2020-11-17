@@ -57,9 +57,10 @@
             <th>Student: </th>
             <th>Club: </th>
             <th>Role: </th>
+            <th>Action: </th>
         </tr>
         <c:forEach items="${result.rows}" var="row">
-            <tr id="tr${row.id}">
+            <tr id="trclub${row.club_id}">
                 <td>${row.fullName}</td>
                 <td>${row.name}</td>
                 <td>${row.role}</td>
@@ -68,6 +69,7 @@
                 <td id="td_update ${row.id}"><a class="btnLink" href="eventsAdd.jsp?action=add&author=${user.id}" onmouseover="updrecolor(${row.id})" onmouseleave="upddecolor(${row.id})">Add event</a></td>
                 <td id="td_delete ${row.id}"><a class="btnLink" href="newsAdd.jsp?action=add&author=${user.id}" onmouseover="delrecolor(${row.id})" onmouseleave="deldecolor(${row.id})">Add news</a></td>
                 </c:if>
+                <td id="td_delete ${row.id}"><button class="btn" onclick="leave(${row.student_id},${row.club_id})" onmouseover="delrecolor(${row.id})" onmouseleave="deldecolor(${row.id})">DELETE</button></td>
             </tr>
         </c:forEach>
     </table><br>
@@ -140,6 +142,19 @@
         )
             .done (function(data, textStatus, jqXHR) {
                 $('#trnews'+taskId).remove();
+            })
+            .fail (function(jqXHR, textStatus, errorThrown) {
+                alert("Error "+textStatus+": "+errorThrown);
+            })
+    }
+    function leave(student_id,club_id){
+        $.ajax({
+                url:"ServletJoin?student_id="+student_id+"&club_id="+club_id,
+                type: "DELETE",
+            }
+        )
+            .done (function(data, textStatus, jqXHR) {
+                $('#trclub'+club_id).remove();
             })
             .fail (function(jqXHR, textStatus, errorThrown) {
                 alert("Error "+textStatus+": "+errorThrown);

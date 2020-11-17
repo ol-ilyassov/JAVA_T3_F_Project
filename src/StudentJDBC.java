@@ -80,4 +80,19 @@ public class StudentJDBC {
             e.printStackTrace();
         }
     }
+
+    public void leave(int student,int club){
+        String sql = "DELETE FROM clubstudent WHERE student_id=? AND club_id=?";
+        try {
+            Connection connection = getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, student);
+            ps.setInt(2,club);
+            ps.executeUpdate();
+            ps.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

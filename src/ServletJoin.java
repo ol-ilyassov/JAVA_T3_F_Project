@@ -16,4 +16,10 @@ public class ServletJoin extends HttpServlet {
         request.setAttribute("response", responseText);
         request.getRequestDispatcher("clubsList.jsp").forward(request, response);
     }
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int student_id = req.getParameter("student_id") != null ? Integer.parseInt(req.getParameter("student_id")) : 0;
+        int club_id = req.getParameter("club_id") != null ? Integer.parseInt(req.getParameter("club_id")) : 0;
+        StudentJDBC.getInstance().leave(student_id,club_id);
+    }
 }

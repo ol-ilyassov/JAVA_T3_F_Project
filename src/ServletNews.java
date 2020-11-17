@@ -53,7 +53,6 @@ public class ServletNews extends HttpServlet {
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int news_id = req.getParameter("news_id") != null ? Integer.parseInt(req.getParameter("news_id")) : 0;
         NewsJDBC.getInstance().delete(news_id);
-
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
