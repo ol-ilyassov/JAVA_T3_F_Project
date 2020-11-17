@@ -211,6 +211,15 @@ footer {
 	width:100%;
 }
 
+#selection{
+	display: flex;
+
+}
+
+.search-key{
+	font-size: 20pt;
+}
+
 /* - Forms - Register */
 
 .form-register {
