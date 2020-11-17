@@ -1,8 +1,11 @@
+import Javaclass.Student;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -25,7 +28,9 @@ public class ServletStudent extends HttpServlet {
             if(connection != null) {
                 ArrayList<Student> studentList = db.readStudent(connection);
                 connection.close();
-                req.setAttribute("studentList", studentList);
+                HttpSession session = req.getSession(true);
+                session.setAttribute("studentList", studentList);
+                //req.setAttribute("studentList", studentList);
             }
         }
         catch (SQLException exception)

@@ -17,7 +17,7 @@
             </c:when>
         </c:choose>
     </p><br>
-    <p>Student List</p><br>
+    <p>Javaclass.Student List</p><br>
 
     <input type="number" id="id" class="search-key" placeholder="id" style="display: none">
     <input type="text" id="fname" class="search-key" placeholder="fname">

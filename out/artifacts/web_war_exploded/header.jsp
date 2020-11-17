@@ -30,7 +30,8 @@
             }
             if (temp.equals(" ")) {
                 out.print("<li><a href='login.jsp'>Login</a></li>");
-            } else if (temp.equals("Student")) {
+            } else if (temp.equals("Javaclass.Student")) {
+                out.print("<li><a href='account.jsp'>Account</a></li>");
                 out.print("<li><a href='ServletStudent'>Students</a></li>");
                 out.print("<li><a href='ServletClubs'>Clubs</a></li>");
                 out.print("<li><a href='ServletNews'>News</a></li>");

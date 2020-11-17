@@ -1,3 +1,7 @@
+package Javaclass;
+
+import Javaclass.User;
+
 public class Student extends User {
 
     protected String groups;
@@ -5,7 +9,7 @@ public class Student extends User {
     protected int year;
 
 
-    protected Student(String[] studentFields) {
+    public Student(String[] studentFields) {
         super(Integer.parseInt(studentFields[0]), studentFields[1], studentFields[2], studentFields[3], studentFields[4], studentFields[5]);
         this.groups = studentFields[6];
         this.major = studentFields[7];

@@ -28,7 +28,7 @@
         SELECT * from students where student_id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="btnLink" href="clubAdd.jsp?action=add&author=${row2.student_id}">Create Club</a><br>
+        <a class="create" href="clubAdd.jsp?action=add&author=${row2.student_id}">Create Club</a><br>
     </c:forEach>
 
     <p>Clubs List</p><br>

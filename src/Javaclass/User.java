@@ -1,3 +1,5 @@
+package Javaclass;
+
 public class User {
     protected int id;
     protected String fname;
