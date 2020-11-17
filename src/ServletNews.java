@@ -1,9 +1,6 @@
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -35,7 +32,20 @@ public class ServletNews extends HttpServlet {
             responseText = "SUCCESS: News details was updated!";
         }
         req.setAttribute("response",responseText);
-        req.getRequestDispatcher("news.jsp").forward(req,resp);
+
+        Cookie[] cookies = req.getCookies();
+        String cookieName = "role";
+        String role="";
+        for ( int i=0; i<cookies.length; i++) {
+            Cookie cookie = cookies[i];
+            if (cookieName.equals(cookie.getName()))
+                role=(cookie.getValue());
+        }
+        if (role.equals("Javaclass.Student")){
+            req.getRequestDispatcher("account.jsp").forward(req,resp);
+        } else {
+            req.getRequestDispatcher("news.jsp").forward(req,resp);
+        }
 
     }
     /*Answer to delete method*/
