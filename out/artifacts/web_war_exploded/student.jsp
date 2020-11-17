@@ -15,13 +15,16 @@
     <div id="selection">
         <select id="groups" class="search-key">
         <option value="">Group</option>
+        <option value="1901">1901</option>
         <option value="1902">1902</option>
         <option value="1903">1903</option>
+        <option value="1905">1905</option>
     </select>
     <select id="major" class="search-key">
         <option value="">Major</option>
         <option value="SE">SE</option>
         <option value="CS">CS</option>
+        <option value="MT">MT</option>
     </select>
     <select id="year" class="search-key">
         <option value="">Year</option>

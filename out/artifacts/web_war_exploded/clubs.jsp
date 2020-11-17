@@ -28,7 +28,7 @@
         SELECT * from admins where id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="create" href="clubAdd.jsp?action=add&author=${row2.id}">Create Club</a><br>
+        <a class="create" href="clubAddAdmin.jsp?action=add">Create Club</a><br>
 
         <sql:query var="result" dataSource="jdbc/db">
         SELECT * FROM clubs

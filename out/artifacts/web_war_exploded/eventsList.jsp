@@ -27,9 +27,7 @@
     <sql:query var="result2" dataSource="jdbc/db">
         SELECT * from students where student_id = <%=number%>
     </sql:query>
-    <c:forEach items="${result2.rows}" var="row2">
-        <a class="create" href="eventsAdd.jsp?action=add&author=${row2.student_id}">Create Event</a><br>
-    </c:forEach>
+
 
     <p>Events List</p><br>
     <input id="myInput1" type="text" placeholder="Search.."><br>
@@ -37,12 +35,17 @@
         <tr>
             <th>ID: </th>
             <th>Name: </th>
+            <th>Action: </th>
         </tr>
         <tbody id="myTable1">
         <c:forEach var="events" items="${eventsList}">
-            <tr>
+            <tr id="tr${events.event_id}">
                 <td>${events.event_id}</td>
                 <td>${events.name}</td>
+                <td id="td_description ${events.event_id}"><button class="bts" onclick="reveal(${events.event_id})" onmouseover="descrecolor(${events.event_id})" onmouseleave="descdecolor(${events.event_id})">DESCRIPTION</button></td>
+            </tr>
+            <tr>
+                <td colspan="3" id="allshow ${events.event_id}" style="display: none;"><p>Description:<br>${events.description}</p></td>
             </tr>
         </c:forEach>
         </tbody>
