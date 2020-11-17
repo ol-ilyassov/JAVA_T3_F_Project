@@ -1,4 +1,4 @@
-public class Events extends eve {
+public class Events extends Eve {
 
     protected int event_id;
 

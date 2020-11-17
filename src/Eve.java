@@ -1,10 +1,10 @@
-public class eve {
+public class Eve {
 
     protected String name;
     protected String description;
     protected int author_id;
 
-    public eve(String name, String description, int author_id) {
+    public Eve(String name, String description, int author_id) {
         this.name = name;
         this.description = description;
         this.author_id = author_id;

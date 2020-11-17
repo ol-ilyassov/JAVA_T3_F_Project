@@ -1,4 +1,4 @@
-public class News extends eve {
+public class News extends Eve {
 
     protected int news_id;
 

@@ -1,4 +1,4 @@
-public class Club extends eve{
+public class Club extends Eve{
     protected int club_id;
 
     public Club(String name, String description, int student_id, int club_id) {

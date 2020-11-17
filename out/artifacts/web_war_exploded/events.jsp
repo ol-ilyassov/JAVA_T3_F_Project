@@ -36,37 +36,32 @@
         int number = Integer.parseInt(userId);
     %>
     <sql:query var="result2" dataSource="jdbc/db">
-        SELECT * from students where student_id = <%=number%>
+        SELECT * from admins where id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="btnLink" href="eventsAdd.jsp?action=add&author=${row2.student_id}">Create Event</a><br>
+        <a class="create" href="eventsAdd.jsp?action=add&author=${row2.id}">Create Event</a><br>
     </c:forEach>
 
+    <sql:query var="result" dataSource="jdbc/db">
+        SELECT * FROM events
+    </sql:query>
     <p>Events List</p><br>
-    <input id="myInput1" type="text" placeholder="Search.."><br>
     <table>
         <tr>
-            <th>ID: </th>
             <th>Name: </th>
             <th>Author: </th>
+            <th colspan="3">Actions: </th>
         </tr>
-        <tbody id="myTable1">
-        <c:forEach var="events" items="${eventsList}">
-            <tr>
-                <td>${events.event_id}</td>
-                <td>${events.name}</td>
-                <td>${events.author_id}</td>
+        <c:forEach items="${result.rows}" var="row">
+            <tr id="tr${row.event_id}">
+                <td>${row.name}</td>
+                <td>${row.author}</td>
+                <td id="td_update ${row.event_id}"><a class="btnLink" href="eventsAdd.jsp?action=update&event_id=${row.event_id}" onmouseover="updrecolor(${row.event_id})" onmouseleave="upddecolor(${row.event_id})">UPDATE</a></td>
+                <td id="td_delete ${row.event_id}"><button class="btn" onclick="deleteBook(${row.event_id})" onmouseover="delrecolor(${row.event_id})" onmouseleave="deldecolor(${row.event_id})">DELETE</button></td>
+                <td id="td_description ${row.event_id}"><button class="bts" onclick="reveal(${row.event_id})" onmouseover="descrecolor(${row.event_id})" onmouseleave="descdecolor(${row.event_id})">DESCRIPTION</button></td>
             </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-
-    <table>
-        <c:forEach var="sessionEvent" items="${eventSessionList}">
             <tr>
-                <td>${sessionEvent.event_id}</td>
-                <td>${sessionEvent.name}</td>
-                <td>${sessionEvent.author_id}</td>
+                <td colspan="6" id="allshow ${row.event_id}" style="display: none;"><p>Description:<br>${row.description}</p></td>
             </tr>
         </c:forEach>
     </table>
@@ -87,15 +82,6 @@
                 alert("Error "+textStatus+": "+errorThrown);
             })
     }
-
-    $(document).ready(function(){
-        $("#myInput1").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#myTable1 tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
 </script>
 
 <%-- Footer --%>

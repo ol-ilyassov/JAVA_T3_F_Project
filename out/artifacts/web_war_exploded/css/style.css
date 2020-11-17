@@ -1,0 +1,354 @@
+
+/* - CSS for all Pages - */
+
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px&display=swap');
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Slabo 27px', serif;
+}
+
+html { height: 100%; }
+
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+h1 {
+	padding: 0 5px 0 5px;
+	display: inline-block;
+	background-color: orange;
+	color: black;
+}
+
+h1:hover {
+	background-color: white;
+}
+
+p { font-size: 20px; }
+
+fieldset { border: none; }
+
+.wrapper { flex-grow: 1;background-image: url("../img/art1.jpeg");background-size: cover; }
+
+/* - booklist.jsp - */
+
+header {
+	display: flex;
+	justify-content: space-around;
+	background: orange;
+	width: 100%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+/* - footer.jsp - */
+
+footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	background: orange;
+}
+
+/* - booklist.jsp - */
+
+.block1 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 30px 30px 30px 30px;
+}
+
+.block1 p{
+	font-size: 25px;
+	background-color: white;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.controlPanel {
+	display: flex;
+	flex-direction: row;
+}
+
+.controlPanelBlock {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.backMainPage {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	background-color: mediumpurple;
+	color: white;
+	width: 100%;
+	height: 50px;
+	border: none;
+	padding: 1px 0 1px 0;
+}
+
+.backMainPage:hover {
+	background: white;
+	border-bottom: 1px solid mediumpurple;
+	border-top: 1px solid mediumpurple;
+	color: mediumpurple;
+	font-weight: bold;
+	padding: 0;
+}
+
+/* - uploadFile.jsp - */
+
+.formUploadFile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.inp {
+	margin: 5px;
+	padding: 5px;
+	font-size: 16px;
+}
+
+#td_update{
+	background: white;
+}
+
+#td_delete{
+	background: white;
+}
+
+#td_description{
+	background: white;
+}
+
+.btn {
+	font-size: 20px;
+	font-weight: bold;
+	background: white;
+	color: mediumpurple;
+	border: none;
+	width: 100%;
+	height: 50px;
+}
+
+.btn:hover {
+	font-size: 20px;
+	background: mediumpurple;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.btnLink {
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	background: white;
+	color: mediumpurple;
+	width: 100%;
+	height: 50px;
+}
+
+.btnLink:hover {
+	background-color: mediumpurple;
+	color: white;
+}
+
+.bts {
+	font-size: 20px;
+	font-weight: bold;
+	background: white;
+	color: mediumpurple;
+	border: none;
+	width: 100%;
+	height: 50px;
+}
+
+.bts:hover {
+	font-size: 20px;
+	background: mediumpurple;
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.create {
+	font-size: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	background: orange;
+	color: mediumpurple;
+	width: 100vw;
+	border-top: 4px solid black;
+	border-bottom: 4px solid black;
+}
+
+.create_event:hover {
+	background-color: mediumpurple;
+	color: white;
+}
+
+#allshow{
+	background-color: white;
+	border-radius: 5px;
+	width:100%;
+}
+
+/* - Forms - Register */
+
+.form-register {
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+}
+
+.form-register div {
+	margin: 10px 0 10px 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-register div input{
+	margin: 5px;
+	padding: 5px;
+	height: 30px;
+	font-size: 21px;
+}
+
+.form-register div select{
+	margin: 5px;
+	height: 30px;
+	font-size: 21px;
+}
+
+.form-register .buttons {
+	grid-column: 1/3;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-register .buttons input{
+	outline: none;
+	margin: 5px;
+	padding: 5px;
+	height: 40px;
+	font-size: 21px;
+	width: 120px;
+	background: darkorange;
+	color: white;
+	border: none;
+	border-radius: 5px;
+}
+
+.form-register .buttons input:hover {
+	background: white;
+	border: 1px solid darkorange;
+	color: darkorange;
+	font-size: 21px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+/* - Forms - Login */
+
+.error {
+	color:red;
+}
+
+.success {
+	color: #35c635;
+}
+
+.form-login {
+	display: flex;
+	flex-direction: column;
+}
+
+.form-login div {
+	margin: 10px 0 10px 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-login div input{
+	margin: 5px;
+	padding: 5px;
+	height: 30px;
+	font-size: 21px;
+}
+
+.form-login .buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-login .buttons input{
+	outline: none;
+	margin: 5px;
+	padding: 5px;
+	height: 40px;
+	font-size: 21px;
+	width: 120px;
+	background: darkorange;
+	color: white;
+	border: none;
+	border-radius: 5px;
+}
+
+.form-login .buttons input:hover {
+	background: white;
+	border: 1px solid darkorange;
+	color: darkorange;
+	font-size: 21px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.msg {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+td,table,th{
+	text-align: center;
+	border: 1px solid black;
+	padding: 10px;
+}
+
+td{
+	background-color: white;
+}
+
+a{
+	text-decoration: none;
+}
+
+table{
+	background-color: orange;
+}

@@ -36,37 +36,32 @@
         int number = Integer.parseInt(userId);
     %>
     <sql:query var="result2" dataSource="jdbc/db">
-        SELECT * from students where student_id = <%=number%>
+        SELECT * from admins where id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="btnLink" href="eventsAdd.jsp?action=add&author=${row2.student_id}">Create Event</a><br>
+        <a class="create" href="newsAdd.jsp?action=add&author=${row2.id}">Create News</a><br>
     </c:forEach>
 
-    <p>Events List</p><br>
-    <input id="myInput1" type="text" placeholder="Search.."><br>
+    <sql:query var="result" dataSource="jdbc/db">
+        SELECT * FROM news
+    </sql:query>
+    <p>News List</p>
     <table>
         <tr>
-            <th>ID: </th>
             <th>Name: </th>
             <th>Author: </th>
+            <th colspan="3">Actions: </th>
         </tr>
-        <tbody id="myTable1">
-        <c:forEach var="events" items="${eventsList}">
-            <tr>
-                <td>${events.event_id}</td>
-                <td>${events.name}</td>
-                <td>${events.author_id}</td>
+        <c:forEach items="${result.rows}" var="row">
+            <tr id="tr${row.news_id}">
+                <td>${row.name}</td>
+                <td>${row.author}</td>
+                <td id="td_update ${row.news_id}"><a class="btnLink" href="newsAdd.jsp?action=update&news_id=${row.news_id}" onmouseover="updrecolor(${row.news_id})" onmouseleave="upddecolor(${row.news_id})">UPDATE</a></td>
+                <td id="td_delete ${row.news_id}"><button class="btn" onclick="deleteBook(${row.news_id})" onmouseover="delrecolor(${row.news_id})" onmouseleave="deldecolor(${row.news_id})">DELETE</button></td>
+                <td id="td_description ${row.news_id}"><button class="bts" onclick="reveal(${row.news_id})" onmouseover="descrecolor(${row.news_id})" onmouseleave="descdecolor(${row.news_id})">DESCRIPTION</button></td>
             </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-
-    <table>
-        <c:forEach var="sessionEvent" items="${eventSessionList}">
             <tr>
-                <td>${sessionEvent.event_id}</td>
-                <td>${sessionEvent.name}</td>
-                <td>${sessionEvent.author_id}</td>
+                <td colspan="6" id="allshow ${row.news_id}" style="display: none;"><p>Description:<br>${row.description}</p></td>
             </tr>
         </c:forEach>
     </table>
@@ -75,27 +70,18 @@
 <script type="text/javascript">
     function deleteBook(taskId){
         $.ajax({
-                url:"ServletEvents?event_id="+taskId,
+                url:"ServletNews?news_id="+taskId,
                 type: "DELETE",
             }
         )
             .done (function(data, textStatus, jqXHR) {
-                $('#response').text("SUCCESS: Event was deleted.");
+                $('#response').text("SUCCESS: News was deleted.");
                 $('#tr'+taskId).remove();
             })
             .fail (function(jqXHR, textStatus, errorThrown) {
                 alert("Error "+textStatus+": "+errorThrown);
             })
     }
-
-    $(document).ready(function(){
-        $("#myInput1").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#myTable1 tr").filter(function() {
-                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-        });
-    });
 </script>
 
 <%-- Footer --%>
