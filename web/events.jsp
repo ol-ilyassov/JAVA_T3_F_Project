@@ -30,7 +30,7 @@
     <c:forEach items="${result2.rows}" var="row2">
         <a class="create" href="eventsAdd.jsp?action=add&author=${row2.id}">Create Event</a><br>
 
-    <sql:query var="result" dataSource="jdbc/db">
+        <sql:query var="result" dataSource="jdbc/db">
         SELECT * FROM events
     </sql:query>
     <p>Events List</p><br>

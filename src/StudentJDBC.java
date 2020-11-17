@@ -65,4 +65,19 @@ public class StudentJDBC {
         }
         return studentList;
     }
+
+    public void join(int student,int club){
+    String sql = "INSERT INTO clubstudent(student_id,club_id,role) values(?,?,\"member\")";
+        try {
+            Connection connection = getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, student);
+            ps.setInt(2, club);
+            ps.executeUpdate();
+            ps.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

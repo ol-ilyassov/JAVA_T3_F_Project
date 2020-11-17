@@ -40,7 +40,7 @@ public class logServlet extends HttpServlet {
         if (flag) {
             responseText = "success";
 
-            Cookie role = new Cookie("role", "Javaclass.Student");
+            Cookie role = new Cookie("role", "Student");
             Cookie userId = new Cookie("userId", id);
 
             role.setMaxAge(60*60*24);
@@ -78,7 +78,7 @@ public class logServlet extends HttpServlet {
                 response.addCookie(role);
                 response.addCookie(userId);
             } else
-                responseText = "There is no Such Javaclass.User!";
+                responseText = "There is no Such User!";
         }
         StudentJDBC db=new StudentJDBC();
         Connection connection = db.getConnection();

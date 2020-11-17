@@ -19,6 +19,8 @@
     }
     if (cookie.getName().equals("userId")) {
     userId = cookie.getValue();
+        request.setAttribute("userId",userId);
+
     }
     }
     }
@@ -27,9 +29,11 @@
     <sql:query var="result2" dataSource="jdbc/db">
         SELECT * from students where student_id = <%=number%>
     </sql:query>
+    <sql:query var="clubstudent" dataSource="jdbc/db">
+        SELECT student_id, CONCAT(fname, " ", lname) fullName, club_id, name, role FROM clubstudent JOIN students USING (student_id) JOIN clubs USING (club_id) WHERE student_id = ${userId}
+    </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
         <a class="create" href="clubAdd.jsp?action=add&author=${row2.student_id}">Create Club</a><br>
-    </c:forEach>
 
     <p>Clubs List</p><br>
     <input id="myInput2" type="text" placeholder="Search.."><br>
@@ -40,15 +44,31 @@
             <th colspan="2">Actions: </th>
         </tr>
         <tbody id="myTable2">
+
         <c:forEach items="${clubsList}" var="clubs">
-            <tr>
-                <td>${clubs.club_id}</td>
-                <td>${clubs.name}</td>
-                <td><a class="btnLink" href="clubAdd.jsp?&club_id=${row.club_id}&role=participant">JOIN</a></td>
-            </tr>
+            <c:set var="flag" value="1" />
+
+            <c:forEach items= "${clubstudent.rows}" var="temp">
+                <c:if test = "${temp.club_id==clubs.club_id}">
+                    <c:set var="flag" value="0" />
+
+                </c:if>
+            </c:forEach>
+            <c:if test = "${flag==1}">
+                <form action="ServletJoin" method="post">
+                    <tr>
+                        <td>${clubs.club_id}</td>
+                        <td>${clubs.name}</td>
+                        <td><input type="submit" name="submitBtn" value="JOIN"></td>
+                        <input type="text" name="student_id" value="${row2.student_id}"hidden>
+                        <input type="text" name="club_id" value="${clubs.club_id}"hidden>
+                    </tr>
+                </form>
+            </c:if>
         </c:forEach>
         </tbody>
     </table>
+    </c:forEach>
 </div>
 
 <script type="text/javascript">
