@@ -46,7 +46,7 @@
     <sql:query var="result" dataSource="jdbc/db">
         SELECT * FROM clubs
     </sql:query>
-    <p>Clubs List</p>
+    <p>Clubs List</p><br>
     <table>
         <tr>
             <th>Name: </th>

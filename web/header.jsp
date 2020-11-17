@@ -16,7 +16,7 @@
     <label for="nav-toggle" class="nav-toggle" onclick></label>
     <h2>Menu</h2>
     <ul>
-        <li><a href='index.jsp'>Main Page</a></li>
+        <li><a href='index.jsp'>About</a></li>
         <%
             String temp = " ";
             Cookie[] cookies = null;

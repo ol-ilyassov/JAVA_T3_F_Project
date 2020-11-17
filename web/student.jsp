@@ -23,7 +23,8 @@
     <input type="text" id="fname" class="search-key" placeholder="fname">
     <input type="text" id="lname" class="search-key" placeholder="lname">
     <input type="text" id="email" class="search-key" placeholder="email">
-    <select id="groups" class="search-key">
+    <div id="selection">
+        <select id="groups" class="search-key">
         <option value="">Group</option>
         <option value="1902">1902</option>
         <option value="1903">1903</option>
@@ -38,6 +39,7 @@
         <option value="2019">2019</option>
         <option value="2020">2020</option>
     </select>
+    </div><br>
 
     <table id="filtering">
         <tr>
