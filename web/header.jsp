@@ -32,7 +32,7 @@
                 out.print("<li><a href='login.jsp'>Login</a></li>");
             } else if (temp.equals("Student")) {
                 out.print("<li><a href='ServletStudent'>Students</a></li>");
-                out.print("<li><a href='clubsList.jsp'>Clubs</a></li>");
+                out.print("<li><a href='ServletClubs'>Clubs</a></li>");
                 out.print("<li><a href='ServletNews'>News</a></li>");
                 out.print("<li><a href='ServletEvents'>Events</a></li>");
                 out.print("<li><a href='logOut'>Logout</a></li>");

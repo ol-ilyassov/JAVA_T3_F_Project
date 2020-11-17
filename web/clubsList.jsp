@@ -7,17 +7,6 @@
 
 <%-- Content --%>
 <div class="block1">
-    <p>Status of Last Action:</p><br>
-    <p id="response">
-        <c:choose>
-            <c:when test = "${empty response}">
-                - NO COMPLETED PROCESSES -
-            </c:when>
-            <c:when test = "${not empty response}">
-                <c:out value="${response}"/>
-            </c:when>
-        </c:choose>
-    </p><br>
     <%
     String role = " ";
     String userId = " ";
@@ -42,22 +31,24 @@
         <a class="btnLink" href="clubAdd.jsp?action=add&author=${row2.student_id}">Create Club</a><br>
     </c:forEach>
 
-    <sql:query var="result" dataSource="jdbc/db">
-        SELECT * FROM clubs
-    </sql:query>
-    <p>Clubs List</p>
+    <p>Clubs List</p><br>
+    <input id="myInput2" type="text" placeholder="Search.."><br>
     <table>
         <tr>
+            <th>ID: </th>
             <th>Name: </th>
             <th>Author: </th>
         </tr>
-        <c:forEach items="${result.rows}" var="row">
-            <tr id="tr${row.club_id}">
-                <td>${row.name}</td>
-                <td>${row.author}</td>
+        <tbody id="myTable2">
+        <c:forEach items="${clubsList}" var="clubs">
+            <tr>
+                <td>${clubs.club_id}</td>
+                <td>${clubs.name}</td>
+                <td>${clubs.author_id}</td>
                 <td><a class="btnLink" href="clubAdd.jsp?&club_id=${row.club_id}&role=participant">JOIN</a></td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </div>
 
@@ -76,6 +67,15 @@
                 alert("Error "+textStatus+": "+errorThrown);
             })
     }
+
+    $(document).ready(function(){
+        $("#myInput2").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable2 tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
 </script>
 
 <%-- Footer --%>

@@ -60,16 +60,6 @@
         </c:forEach>
         </tbody>
     </table>
-
-    <table>
-        <c:forEach var="sessionEvent" items="${eventSessionList}">
-            <tr>
-                <td>${sessionEvent.event_id}</td>
-                <td>${sessionEvent.name}</td>
-                <td>${sessionEvent.author_id}</td>
-            </tr>
-        </c:forEach>
-    </table>
 </div>
 
 <script type="text/javascript">

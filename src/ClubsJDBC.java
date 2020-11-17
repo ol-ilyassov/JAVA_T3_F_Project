@@ -2,10 +2,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class ClubsJDBC {
     private static ClubsJDBC instance = new ClubsJDBC();
@@ -14,9 +12,9 @@ public class ClubsJDBC {
         return instance;
     }
 
-    private ClubsJDBC() {}
+    public ClubsJDBC() {}
 
-    private Connection getConnection()
+    public Connection getConnection()
     {
         Context initialContext;
         Connection connection = null;
@@ -102,6 +100,37 @@ public class ClubsJDBC {
             e.printStackTrace();
         }
         return counter;
+    }
+
+    public ArrayList<Club> readEvents(Connection connection)
+    {
+        ArrayList<Club> clubList = new ArrayList<>();
+        try
+        {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM clubs");
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int numberOfColumns = metaData.getColumnCount();
+            Club club;
+            while (resultSet.next())
+            {
+                String[] clubsFields = new String[numberOfColumns];
+                for(int a=1; a<=numberOfColumns; a++)
+                {
+                    clubsFields[a-1] = resultSet.getObject(a).toString();
+                }
+                club = new Club(clubsFields);
+                clubList.add(club);
+            }
+            resultSet.close();
+            connection.close();
+            statement.close();
+        }
+        catch (SQLException sqlException)
+        {
+            sqlException.printStackTrace();
+        }
+        return clubList;
     }
 
 }

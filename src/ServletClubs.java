@@ -1,13 +1,14 @@
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet("/ServletClubs")
 public class ServletClubs extends HttpServlet {
+    ClubsJDBC db = new ClubsJDBC();
     /*Answer to post method*/
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -34,7 +35,6 @@ public class ServletClubs extends HttpServlet {
         req.setAttribute("response",responseText);
         req.getRequestDispatcher("clubs.jsp").forward(req,resp);
 
-
     }
     /*Answer to delete method*/
     @Override
@@ -42,5 +42,24 @@ public class ServletClubs extends HttpServlet {
         int club_id = req.getParameter("club_id") != null ? Integer.parseInt(req.getParameter("club_id")) : 0;
         ClubsJDBC.getInstance().delete(club_id);
 
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try
+        {
+            Connection connection = db.getConnection();
+            if(connection != null) {
+                ArrayList<Club> clubsList = db.readEvents(connection);
+                connection.close();
+                HttpSession session = req.getSession(true);
+                session.setAttribute("clubsList", clubsList);
+            }
+        }
+        catch (SQLException exception)
+        {
+            exception.printStackTrace();
+        }
+        req.getRequestDispatcher("clubsList.jsp").forward(req, resp);
     }
 }
