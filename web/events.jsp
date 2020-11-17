@@ -7,17 +7,6 @@
 
 <%-- Content --%>
 <div class="block1">
-    <p>Status of Last Action:</p><br>
-    <p id="response">
-        <c:choose>
-            <c:when test = "${empty response}">
-                - NO COMPLETED PROCESSES -
-            </c:when>
-            <c:when test = "${not empty response}">
-                <c:out value="${response}"/>
-            </c:when>
-        </c:choose>
-    </p><br>
     <%
         String role = " ";
         String userId = " ";
@@ -40,9 +29,8 @@
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
         <a class="create" href="eventsAdd.jsp?action=add&author=${row2.id}">Create Event</a><br>
-    </c:forEach>
 
-    <sql:query var="result" dataSource="jdbc/db">
+        <sql:query var="result" dataSource="jdbc/db">
         SELECT * FROM events
     </sql:query>
     <p>Events List</p><br>
@@ -56,7 +44,7 @@
             <tr id="tr${row.event_id}">
                 <td>${row.name}</td>
                 <td>${row.author}</td>
-                <td id="td_update ${row.event_id}"><a class="btnLink" href="eventsAdd.jsp?action=update&event_id=${row.event_id}" onmouseover="updrecolor(${row.event_id})" onmouseleave="upddecolor(${row.event_id})">UPDATE</a></td>
+                <td id="td_update ${row.event_id}"><a class="btnLink" href="eventsAdd.jsp?action=update&event_id=${row.event_id}&author=${row2.id}" onmouseover="updrecolor(${row.event_id})" onmouseleave="upddecolor(${row.event_id})">UPDATE</a></td>
                 <td id="td_delete ${row.event_id}"><button class="btn" onclick="deleteBook(${row.event_id})" onmouseover="delrecolor(${row.event_id})" onmouseleave="deldecolor(${row.event_id})">DELETE</button></td>
                 <td id="td_description ${row.event_id}"><button class="bts" onclick="reveal(${row.event_id})" onmouseover="descrecolor(${row.event_id})" onmouseleave="descdecolor(${row.event_id})">DESCRIPTION</button></td>
             </tr>
@@ -65,8 +53,8 @@
             </tr>
         </c:forEach>
     </table>
+    </c:forEach>
 </div>
-
 <script type="text/javascript">
     function deleteBook(taskId){
         $.ajax({

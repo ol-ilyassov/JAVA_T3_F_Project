@@ -1,3 +1,5 @@
+import Javaclass.Student;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -62,5 +64,35 @@ public class StudentJDBC {
             sqlException.printStackTrace();
         }
         return studentList;
+    }
+
+    public void join(int student,int club){
+    String sql = "INSERT INTO clubstudent(student_id,club_id,role) values(?,?,\"member\")";
+        try {
+            Connection connection = getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, student);
+            ps.setInt(2, club);
+            ps.executeUpdate();
+            ps.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void leave(int student,int club){
+        String sql = "DELETE FROM clubstudent WHERE student_id=? AND club_id=?";
+        try {
+            Connection connection = getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, student);
+            ps.setInt(2,club);
+            ps.executeUpdate();
+            ps.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

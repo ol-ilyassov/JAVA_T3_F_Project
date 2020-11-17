@@ -6,17 +6,6 @@
 <jsp:include page="header.jsp"/>
 <%-- Content --%>
 <div class="block1">
-    <p>Status of Last Action:</p><br>
-    <p id="response">
-        <c:choose>
-            <c:when test = "${empty response}">
-                - NO COMPLETED PROCESSES -
-            </c:when>
-            <c:when test = "${not empty response}">
-                <c:out value="${response}"/>
-            </c:when>
-        </c:choose>
-    </p><br>
     <p>Student List</p><br>
 
     <input type="number" id="id" class="search-key" placeholder="id" style="display: none">

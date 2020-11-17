@@ -200,7 +200,7 @@ footer {
 	border-bottom: 4px solid black;
 }
 
-.create_event:hover {
+.create:hover {
 	background-color: mediumpurple;
 	color: white;
 }

@@ -1,8 +1,6 @@
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -34,7 +32,20 @@ public class ServletNews extends HttpServlet {
             responseText = "SUCCESS: News details was updated!";
         }
         req.setAttribute("response",responseText);
-        req.getRequestDispatcher("news.jsp").forward(req,resp);
+
+        Cookie[] cookies = req.getCookies();
+        String cookieName = "role";
+        String role="";
+        for ( int i=0; i<cookies.length; i++) {
+            Cookie cookie = cookies[i];
+            if (cookieName.equals(cookie.getName()))
+                role=(cookie.getValue());
+        }
+        if (role.equals("Javaclass.Student")){
+            req.getRequestDispatcher("account.jsp").forward(req,resp);
+        } else {
+            req.getRequestDispatcher("news.jsp").forward(req,resp);
+        }
 
     }
     /*Answer to delete method*/
@@ -42,7 +53,6 @@ public class ServletNews extends HttpServlet {
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int news_id = req.getParameter("news_id") != null ? Integer.parseInt(req.getParameter("news_id")) : 0;
         NewsJDBC.getInstance().delete(news_id);
-
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -52,6 +62,7 @@ public class ServletNews extends HttpServlet {
             if(connection != null) {
                 ArrayList<News> newsList = db.readNews(connection);
                 connection.close();
+                HttpSession session = req.getSession(true);
                 req.setAttribute("newsList", newsList);
             }
         }

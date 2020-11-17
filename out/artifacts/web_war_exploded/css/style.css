@@ -200,7 +200,7 @@ footer {
 	border-bottom: 4px solid black;
 }
 
-.create_event:hover {
+.create:hover {
 	background-color: mediumpurple;
 	color: white;
 }
@@ -209,6 +209,15 @@ footer {
 	background-color: white;
 	border-radius: 5px;
 	width:100%;
+}
+
+#selection{
+	display: flex;
+
+}
+
+.search-key{
+	font-size: 20pt;
 }
 
 /* - Forms - Register */

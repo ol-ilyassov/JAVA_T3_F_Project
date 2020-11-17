@@ -6,24 +6,14 @@
 <jsp:include page="header.jsp"/>
 <%-- Content --%>
 <div class="block1">
-    <p>Status of Last Action:</p><br>
-    <p id="response">
-        <c:choose>
-            <c:when test = "${empty response}">
-                - NO COMPLETED PROCESSES -
-            </c:when>
-            <c:when test = "${not empty response}">
-                <c:out value="${response}"/>
-            </c:when>
-        </c:choose>
-    </p><br>
     <p>Student List</p><br>
 
     <input type="number" id="id" class="search-key" placeholder="id" style="display: none">
     <input type="text" id="fname" class="search-key" placeholder="fname">
     <input type="text" id="lname" class="search-key" placeholder="lname">
     <input type="text" id="email" class="search-key" placeholder="email">
-    <select id="groups" class="search-key">
+    <div id="selection">
+        <select id="groups" class="search-key">
         <option value="">Group</option>
         <option value="1902">1902</option>
         <option value="1903">1903</option>
@@ -38,6 +28,7 @@
         <option value="2019">2019</option>
         <option value="2020">2020</option>
     </select>
+    </div><br>
 
     <table id="filtering">
         <tr>

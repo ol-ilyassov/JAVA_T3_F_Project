@@ -1,3 +1,5 @@
+import Javaclass.Student;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -7,6 +9,7 @@ import javax.servlet.http.*;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 
 @WebServlet("/logServlet")
 public class logServlet extends HttpServlet {
@@ -37,7 +40,7 @@ public class logServlet extends HttpServlet {
         if (flag) {
             responseText = "success";
 
-            Cookie role = new Cookie("role", "Student");
+            Cookie role = new Cookie("role", "Javaclass.Student");
             Cookie userId = new Cookie("userId", id);
 
             role.setMaxAge(60*60*24);
@@ -66,7 +69,7 @@ public class logServlet extends HttpServlet {
             if (flag){
                 responseText = "success";
 
-                Cookie role = new Cookie("role", "Admin");
+                Cookie role = new Cookie("role", "Javaclass.Admin");
                 Cookie userId = new Cookie("userId", id);
 
                 role.setMaxAge(60*60*24);
@@ -75,7 +78,20 @@ public class logServlet extends HttpServlet {
                 response.addCookie(role);
                 response.addCookie(userId);
             } else
-                responseText = "There is no Such User!";
+                responseText = "There is no Such Javaclass.User!";
+        }
+        StudentJDBC db=new StudentJDBC();
+        Connection connection = db.getConnection();
+        if(connection != null) {
+            ArrayList<Student> studentList = db.readStudent(connection);
+            try {
+                connection.close();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            HttpSession session = request.getSession(true);
+            session.setAttribute("studentList", studentList);
+            //req.setAttribute("studentList", studentList);
         }
         response.setContentType("text/plain");
         response.getWriter().write(responseText);

@@ -7,17 +7,6 @@
 
 <%-- Content --%>
 <div class="block1">
-    <p>Status of Last Action:</p><br>
-    <p id="response">
-        <c:choose>
-            <c:when test = "${empty response}">
-                - NO COMPLETED PROCESSES -
-            </c:when>
-            <c:when test = "${not empty response}">
-                <c:out value="${response}"/>
-            </c:when>
-        </c:choose>
-    </p><br>
     <%
         String role = " ";
         String userId = " ";
@@ -39,7 +28,7 @@
         SELECT * from students where student_id = <%=number%>
     </sql:query>
     <c:forEach items="${result2.rows}" var="row2">
-        <a class="btnLink" href="eventsAdd.jsp?action=add&author=${row2.student_id}">Create Event</a><br>
+        <a class="create" href="eventsAdd.jsp?action=add&author=${row2.student_id}">Create Event</a><br>
     </c:forEach>
 
     <p>Events List</p><br>
@@ -48,27 +37,15 @@
         <tr>
             <th>ID: </th>
             <th>Name: </th>
-            <th>Author: </th>
         </tr>
         <tbody id="myTable1">
         <c:forEach var="events" items="${eventsList}">
             <tr>
                 <td>${events.event_id}</td>
                 <td>${events.name}</td>
-                <td>${events.author_id}</td>
             </tr>
         </c:forEach>
         </tbody>
-    </table>
-
-    <table>
-        <c:forEach var="sessionEvent" items="${eventSessionList}">
-            <tr>
-                <td>${sessionEvent.event_id}</td>
-                <td>${sessionEvent.name}</td>
-                <td>${sessionEvent.author_id}</td>
-            </tr>
-        </c:forEach>
     </table>
 </div>
 

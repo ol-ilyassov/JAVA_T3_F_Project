@@ -30,13 +30,14 @@
             }
             if (temp.equals(" ")) {
                 out.print("<li><a href='login.jsp'>Login</a></li>");
-            } else if (temp.equals("Student")) {
+            } else if (temp.equals("Javaclass.Student")) {
+                out.print("<li><a href='account.jsp'>Account</a></li>");
                 out.print("<li><a href='ServletStudent'>Students</a></li>");
-                out.print("<li><a href='clubsList.jsp'>Clubs</a></li>");
+                out.print("<li><a href='ServletClubs'>Clubs</a></li>");
                 out.print("<li><a href='ServletNews'>News</a></li>");
                 out.print("<li><a href='ServletEvents'>Events</a></li>");
                 out.print("<li><a href='logOut'>Logout</a></li>");
-            } else if (temp.equals("Admin")) {
+            } else if (temp.equals("Javaclass.Admin")) {
                 out.print("<li><a href='ServletStudent'>Students</a></li>");
                 out.print("<li><a href='clubs.jsp'>Clubs</a></li>");
                 out.print("<li><a href='news.jsp'>News</a></li>");

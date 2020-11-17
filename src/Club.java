@@ -6,6 +6,11 @@ public class Club extends Eve{
         this.club_id = club_id;
     }
 
+    protected Club(String[] clubsFields) {
+        super(clubsFields[1], clubsFields[2], Integer.parseInt(clubsFields[3]));
+        this.club_id = Integer.parseInt(clubsFields[0]);
+    }
+
     public Club(String name, String description, int student_id) {
         super(name, description, student_id);
     }

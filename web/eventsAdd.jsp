@@ -22,6 +22,7 @@
                             <td>Name:</td>
                             <td><input type='text' name='name' value="${row.name}"></td>
                         </tr>
+                        <input type="text" name="author" value="${param['author']}" hidden>
                         <tr>
                             <td>Description:</td>
                             <td><input type='text' name='description' value="${row.description}"></td>
