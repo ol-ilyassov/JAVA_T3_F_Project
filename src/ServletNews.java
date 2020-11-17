@@ -3,6 +3,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -52,6 +53,7 @@ public class ServletNews extends HttpServlet {
             if(connection != null) {
                 ArrayList<News> newsList = db.readNews(connection);
                 connection.close();
+                HttpSession session = req.getSession(true);
                 req.setAttribute("newsList", newsList);
             }
         }

@@ -55,9 +55,8 @@ public class ServletEvents extends HttpServlet {
             if(connection != null) {
                 ArrayList<Events> eventsList = db.readEvents(connection);
                 connection.close();
-                req.setAttribute("eventsList", eventsList);
                 HttpSession session = req.getSession(true);
-                session.setAttribute("eventSessionList", eventsList);
+                session.setAttribute("eventsList", eventsList);
             }
         }
         catch (SQLException exception)
