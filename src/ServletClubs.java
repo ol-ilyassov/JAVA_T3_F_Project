@@ -21,7 +21,9 @@ public class ServletClubs extends HttpServlet {
         if (action.equals("add")) {
             int number = ClubsJDBC.getInstance().checkForID(club);
             if(number == 0) {
-                ClubsJDBC.getInstance().create(club);
+                club=ClubsJDBC.getInstance().create(club);
+                System.out.println(club.club_id);
+                ClubsJDBC.getInstance().insertAsCreator(club);
 
                 responseText = "SUCCESS: Club was created";
             }else {
@@ -33,7 +35,19 @@ public class ServletClubs extends HttpServlet {
             responseText = "SUCCESS: Club details was updated!";
         }
         req.setAttribute("response",responseText);
-        req.getRequestDispatcher("clubs.jsp").forward(req,resp);
+        Cookie[] cookies = req.getCookies();
+        String cookieName = "role";
+        String role="";
+        for ( int i=0; i<cookies.length; i++) {
+            Cookie cookie = cookies[i];
+            if (cookieName.equals(cookie.getName()))
+                role=(cookie.getValue());
+        }
+        if (role.equals("Javaclass.Student")){
+            req.getRequestDispatcher("index.jsp").forward(req,resp);
+        } else {
+            req.getRequestDispatcher("index.jsp").forward(req,resp);        }
+
 
     }
     /*Answer to delete method*/

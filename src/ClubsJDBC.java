@@ -34,6 +34,7 @@ public class ClubsJDBC {
 
     public Club create(Club club ) {
         String sql = "INSERT INTO clubs (name,description,author) VALUES ( ?,?,?)";
+        String sql1 = "SELECT * FROM clubs WHERE name=? AND description=? AND author=?";
         try {
             Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -41,12 +42,37 @@ public class ClubsJDBC {
             ps.setString(2, club.getDescription());
             ps.setInt(3, club.getAuthor_id());
             ps.executeUpdate();
+            PreparedStatement st = connection.prepareStatement(sql1);
+            st.setString(1, club.name);
+            st.setString(2, club.description);
+            st.setInt(3, club.author_id);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()){
+                club.setClub_id(rs.getInt("club_id"));
+            }
+            rs.close();
+            st.close();
             ps.close();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return club;
+    }
+
+    public void insertAsCreator(Club club){
+        String sql = "INSERT INTO clubstudent (student_id,club_id,role) VALUES ( ?,?,\"creator\")";
+        try {
+            Connection connection = getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, club.author_id);
+            ps.setInt(2, club.club_id);
+            ps.executeUpdate();
+            ps.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void delete(int club_id) {
